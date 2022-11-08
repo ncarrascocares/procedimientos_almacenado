@@ -1,3 +1,6 @@
+<script>
+    const base_url = "<?= BASE_URL ?>";
+</script>
 <!--Libreria js de bootstrap-->
 <script src="<?=BASE_URL?>assets/js/bootstrap.min.js"></script>
 
