@@ -13,23 +13,10 @@
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>marca@correo.cl</td>
-                    <td>
-                        <a href="<?=BASE_URL?>views/persona/editar-persona.php?personaid=1" class="btn btn-outline-primary btn-sm" title="Editar Registro">
-                            <i class="fas fa-user-edit"></i>
-                        </a>
-                        <button class="btn btn-outline-danger btn-sm" title="Eliminar registro" onclick="fntDelPersona(1)">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
+            <tbody id="tblBodyPersonas">
+                <!--Esta sección se llena desde el fichero functions-personas.js-->
             </tbody>
         </table>
     </main>
     <?php include_once '../template/footer.php'; ?>
+<script src="../template/js/funtions-persona.js"></script>
