@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_sistema`
 --
+CREATE DATABASE IF NOT EXISTS `db_sistema` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
+USE `db_sistema`;
 
 DELIMITER $$
 --
