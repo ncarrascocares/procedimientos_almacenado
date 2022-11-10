@@ -35,9 +35,36 @@
 
 
     }
+
+
     if ($option == "registro") {
-        echo "Registrar Persona";
+
+        //var_dump($_POST);
+       if ($_POST) {
+        if (empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['intNumero']) || empty($_POST['txtEmail'])) {
+            $arrResponse = array('status' => 'false', 'msg' => 'Error de los datos');
+        } else {
+            $strNombre = ucwords(trim($_POST['txtNombre']));
+            $strApellido = ucwords(trim($_POST['txtApellido']));
+            $intTelefono = trim($_POST['intNumero']);
+            $strEmail = strtolower($_POST['txtEmail']);
+
+            $arrPersona = $objPersona->insertPersona($strNombre, $strApellido, $intTelefono, $strEmail);
+            if ($arrPersona->id > 0) {
+                $arrResponse = array('status' => 'true', 'msg' => 'Datos guardados correctamente');
+            }else{
+                $arrResponse = array('status' => 'false', 'msg' => 'Error al guardar los datos');
+            }
+        }
+
+        echo json_encode($arrResponse);
+        
+       }
+
+       die();
     }
+
+
     if ($option == "verregistro") {
         echo "Ver una personas";
     }
