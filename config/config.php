@@ -6,7 +6,7 @@
     const DB_PASS = "";
     const DB_CHARSET = "utf8";
 
-    const BASE_URL = "http://localhost/tareas/";
+    const BASE_URL = "http://localhost/procedimientos_almacenado/";
 
 
 ?>
