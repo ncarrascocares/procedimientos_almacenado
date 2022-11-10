@@ -18,9 +18,12 @@
         </div>
         <div class="mb-3">
             <label for="txtEmail" class="form-label">Email</label>
-            <input type="password" class="form-control" id="txtEmail" name="txtEmail" placeholder="Correo electronico" requerid> 
+            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Correo electronico" requerid> 
         </div>
         <button type="submit" class="btn btn-info"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
     </form>
 </main>
 <?php include_once '../template/footer.php'; ?>
+
+<!--Llamada a la función functions-persona-->
+<script src="../template/js/funtions-persona.js"></script>
