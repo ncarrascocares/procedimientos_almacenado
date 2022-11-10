@@ -21,6 +21,12 @@ require_once "../libraries/conexion.php";
 
             return $arrRegistros;
         }
+
+        public function insertPersona(string $nombre, string $apellido, int $telefono, string $email){
+            $sql = $this->conexion->query("CALL insert_personas('{$nombre}', '{$apellido}', '{$telefono}', '{$email}')");
+            $respuesta = $sql->fetch_object();
+            return $respuesta;
+        }
     }
 
   
