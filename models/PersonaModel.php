@@ -27,6 +27,18 @@ require_once "../libraries/conexion.php";
             $respuesta = $sql->fetch_object();
             return $respuesta;
         }
+
+        public function getPersona(int $id){
+            $sql = $this->conexion->query("CALL select_personas('{$id}')");
+            $respuesta = $sql->fetch_object();
+            return $respuesta;
+        }
+
+        public function updatePersona(int $id,string $nombre, string $apellido, int $telefono, string $email){
+            $sql = $this->conexion->query("CALL update_persona('{$id}','{$nombre}','{$apellido}','{$telefono}','{$email}')");
+            $respuesta = $sql->fetch_object();
+            return $respuesta;
+        }
     }
 
   

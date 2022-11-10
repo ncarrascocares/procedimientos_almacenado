@@ -51,9 +51,9 @@
 
             $arrPersona = $objPersona->insertPersona($strNombre, $strApellido, $intTelefono, $strEmail);
             if ($arrPersona->id > 0) {
-                $arrResponse = array('status' => 'true', 'msg' => 'Datos guardados correctamente');
+                $arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente');
             }else{
-                $arrResponse = array('status' => 'false', 'msg' => 'Error al guardar los datos');
+                $arrResponse = array('status' => false, 'msg' => 'Error al guardar los datos');
             }
         }
 
@@ -66,10 +66,52 @@
 
 
     if ($option == "verregistro") {
-        echo "Ver una personas";
+        if ($_POST) {
+            $idpersona = intval($_POST['idpersona']);
+            // print_r($idpersona);
+            // die();
+            $arrPersona = $objPersona->getPersona($idpersona);
+
+            if (empty($arrPersona)) {
+                $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
+            }else{
+                $arrResponse = array('status' => true, 'msg' => 'Datos encontrados', 'data' => $arrPersona);
+            }
+
+            echo json_encode($arrResponse);
+        }
+
+        die();
+
     }
+
+
     if ($option == "actualizar") {
-        echo "Actualizar una persona";
+        if ($_POST) {
+            if (empty($_POST['intId']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['intNumero']) || empty($_POST['txtEmail'])) {
+                $arrResponse = array('status' => 'false', 'msg' => 'Error de los datos');
+            } else {
+                $intId = intval($_POST['intId']);
+                $strNombre = ucwords(trim($_POST['txtNombre']));
+                $strApellido = ucwords(trim($_POST['txtApellido']));
+                $intTelefono = trim($_POST['intNumero']);
+                $strEmail = strtolower($_POST['txtEmail']);
+    
+                $arrPersona = $objPersona->updatePersona($intId,$strNombre, $strApellido, $intTelefono, $strEmail);
+                //var_dump($arrPersona);
+                //die();
+                if ($arrPersona->idp > 0) {
+                    $arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente');
+                }else{
+                    $arrResponse = array('status' => false, 'msg' => 'Error al actualizar o correo ya existe');
+                }
+            }
+    
+            echo json_encode($arrResponse);
+            
+           }
+    
+           die();
     }
     if ($option == "eliminar") {
         echo "Eliminar una persona";
